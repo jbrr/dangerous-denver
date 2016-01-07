@@ -34,7 +34,9 @@ class DangerousDenver
   def sort_data(data_type, data_key)
     load_traffic_data(data_type)
     incidents.each do |incident|
-      if incident[:"#{data_key}"] && (!(data_type == "crime" && incident[:offense_category_id] == "traffic-accident"))
+      if incident[:"#{data_key}"] &&
+         (!(data_type == "crime" &&
+         incident[:offense_category_id] == "traffic-accident"))
         sort_by_frequency(incident[:"#{data_key}"])
       end
     end
